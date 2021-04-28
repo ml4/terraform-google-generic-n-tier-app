@@ -1,6 +1,6 @@
 module "terraform-google-rhel-N-tier" {
   source       = ".../modules/terraform-google-windows-N-tier"
-  project      = "project"
+  project      = var.project
   prefix       = "app1"
   subnet_range = "10.150.8.0/24"
   web          = true
@@ -22,3 +22,5 @@ module "terraform-google-rhel-N-tier" {
     machine_type = "n1-standard-1"
   }
 }
+  
+  variable "project" {}
