@@ -21,11 +21,11 @@ resource "google_compute_instance_template" "database" {
 
   metadata_startup_script = var.database_startup_script
 
-  // service_account {
-  //   scopes = ["cloud-platform"]
+  # service_account {
+  #   scopes = ["cloud-platform"]
 
-  //   email = var.service_account
-  // }
+  #   email = var.service_account
+  # }
 
   labels = var.labels
 
