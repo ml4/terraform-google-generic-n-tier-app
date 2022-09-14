@@ -13,5 +13,5 @@ terraform {
       source = "hashicorp/local"
     }
   }
-  required_version = ">= 1.2.3"
+  required_version = ">= 1.2.7"
 }
