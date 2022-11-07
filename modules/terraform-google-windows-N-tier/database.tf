@@ -1,5 +1,5 @@
 resource "google_compute_instance_template" "database" {
-  count = var.database ? 1 : 0
+  count        = var.database ? 1 : 0
   name_prefix  = "${var.prefix}-windows-sql-template-"
   machine_type = var.database_instance_config.machine_type
 
@@ -14,7 +14,7 @@ resource "google_compute_instance_template" "database" {
   }
 
   network_interface {
-    network = google_compute_network.vpc.self_link
+    network    = google_compute_network.vpc.self_link
     subnetwork = google_compute_subnetwork.subnet.self_link
 
   }
@@ -39,7 +39,7 @@ resource "google_compute_instance_template" "database" {
 
 resource "google_compute_region_instance_group_manager" "database" {
   count = var.database ? 1 : 0
-  name = "${var.prefix}-database-group-manager"
+  name  = "${var.prefix}-database-group-manager"
 
   base_instance_name = "${var.prefix}-vm"
 

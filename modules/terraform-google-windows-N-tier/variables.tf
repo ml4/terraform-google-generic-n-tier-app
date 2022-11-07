@@ -1,16 +1,16 @@
 variable "web" {
   description = "set to true to include web tier"
-  default = false
+  default     = false
 }
 
 variable "app" {
   description = "set to true to include app tier"
-  default = false
+  default     = false
 }
 
 variable "database" {
   description = "set to true to include database tier"
-  default = false
+  default     = false
 }
 
 variable "project" {}
@@ -58,18 +58,18 @@ variable "database_instance_config" {
 
 variable "app_server_instance_config" {
   type = object({
-    disk_image     = string
-    disk_size      = string
-    disk_type      = string
-    target_size    = string
-    machine_type   = string
+    disk_image   = string
+    disk_size    = string
+    disk_type    = string
+    target_size  = string
+    machine_type = string
   })
   default = {
-    disk_image     = "appserver_windows"
-    disk_size      = "200"
-    disk_type      = "pd-ssd"
-    target_size    = "1"
-    machine_type   = "n1-standard-1"
+    disk_image   = "appserver_windows"
+    disk_size    = "200"
+    disk_type    = "pd-ssd"
+    target_size  = "1"
+    machine_type = "n1-standard-1"
   }
 }
 
@@ -96,15 +96,15 @@ variable "ip_allow_list" {
 }
 
 variable "region" {
-  type = string
+  type        = string
   description = "region to deploy into"
-  default = "europe-west2"
+  default     = "europe-west2"
 }
 
 variable "subnet_range" {
-  type = string
+  type        = string
   description = "IP CIDR range for subnet"
-  default = ""
+  default     = ""
 }
 
 variable "web_startup_script" {

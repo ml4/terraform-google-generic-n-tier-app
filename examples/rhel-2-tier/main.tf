@@ -22,5 +22,5 @@ module "terraform-google-rhel-N-tier" {
     machine_type = "n1-standard-1"
   }
 }
-  
-  variable "project" {}
+
+variable "project" {}

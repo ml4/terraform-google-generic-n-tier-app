@@ -1,5 +1,5 @@
 resource "google_compute_instance_template" "webserver" {
-  count = var.web ? 1 : 0
+  count        = var.web ? 1 : 0
   name_prefix  = "${var.prefix}-windows-web-template-"
   machine_type = var.webserver_instance_config.machine_type
 
@@ -14,17 +14,17 @@ resource "google_compute_instance_template" "webserver" {
   }
 
   network_interface {
-    network = google_compute_network.vpc.self_link
+    network    = google_compute_network.vpc.self_link
     subnetwork = google_compute_subnetwork.subnet.self_link
   }
 
   metadata_startup_script = var.web_startup_script
 
-#   service_account {
-#     scopes = ["cloud-platform"]
+  #   service_account {
+  #     scopes = ["cloud-platform"]
 
-#     email = var.service_account
-#   }
+  #     email = var.service_account
+  #   }
 
   labels = var.labels
 
@@ -38,7 +38,7 @@ resource "google_compute_instance_template" "webserver" {
 
 resource "google_compute_region_instance_group_manager" "webserver" {
   count = var.web ? 1 : 0
-  name = "${var.prefix}-webserver-group-manager"
+  name  = "${var.prefix}-webserver-group-manager"
 
   base_instance_name = "${var.prefix}-web-server"
 

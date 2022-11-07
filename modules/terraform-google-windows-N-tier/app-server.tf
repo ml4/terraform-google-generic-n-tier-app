@@ -1,5 +1,5 @@
 resource "google_compute_instance_template" "app_server" {
-  count = var.app ? 1 : 0
+  count        = var.app ? 1 : 0
   name_prefix  = "${var.prefix}-windows-app-template-"
   machine_type = var.app_server_instance_config.machine_type
 
@@ -14,17 +14,17 @@ resource "google_compute_instance_template" "app_server" {
   }
 
   network_interface {
-    network = google_compute_network.vpc.self_link
+    network    = google_compute_network.vpc.self_link
     subnetwork = google_compute_subnetwork.subnet.self_link
   }
 
   metadata_startup_script = var.app_startup_script
 
-#   service_account {
-#     scopes = ["cloud-platform"]
+  #   service_account {
+  #     scopes = ["cloud-platform"]
 
-#     email = var.service_account
-#   }
+  #     email = var.service_account
+  #   }
 
   labels = var.labels
 
@@ -38,7 +38,7 @@ resource "google_compute_instance_template" "app_server" {
 
 resource "google_compute_region_instance_group_manager" "app_server" {
   count = var.app ? 1 : 0
-  name = "${var.prefix}-app-server-group-manager"
+  name  = "${var.prefix}-app-server-group-manager"
 
   base_instance_name = "${var.prefix}-app-server"
 
